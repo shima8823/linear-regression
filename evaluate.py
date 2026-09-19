@@ -16,7 +16,7 @@ def r2_score(mileages, prices, theta0, theta1):
     mean_price = sum(prices) / m
 
     residual_sum_of_squares = sum(
-        (prices[i] - estimate_price(mileages[i], theta0, theta1)) ** 2
+        (estimate_price(mileages[i], theta0, theta1) - prices[i]) ** 2
         for i in range(m)
     )
     total_sum_of_squares = sum((price - mean_price) ** 2 for price in prices)
