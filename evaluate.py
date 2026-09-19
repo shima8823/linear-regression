@@ -31,7 +31,9 @@ def main():
     rmse = mean_squared_error(mileages, prices, theta0, theta1) ** 0.5
     r2 = r2_score(mileages, prices, theta0, theta1)
 
+    # RMSE: 各データが平均してどれくらい価格からズレているか(単位: price)
     print(f"RMSE: {rmse}")
+    # R2: ただ平均値で予測する場合と比べて、どれだけ優れているか(1に近いほど良い)
     print(f"R2:   {r2}")
 
 
