@@ -1,3 +1,5 @@
+import sys
+
 from predict import estimate_price, load_theta
 from train import load_data
 
@@ -26,7 +28,12 @@ def r2_score(mileages, prices, theta0, theta1):
 
 def main():
     mileages, prices = load_data("data.csv")
-    theta0, theta1 = load_theta("theta.txt")
+
+    try:
+        theta0, theta1 = load_theta("theta.txt")
+    except ValueError as e:
+        print(f"エラー: {e}")
+        sys.exit(1)
 
     rmse = mean_squared_error(mileages, prices, theta0, theta1) ** 0.5
     r2 = r2_score(mileages, prices, theta0, theta1)
